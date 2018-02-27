@@ -4,7 +4,9 @@ import control from '../../hocs/control';
 
 const Textarea = ({ error, isChanged, isUsed, ...props }) => (
   <div>
-    <textarea {...props} />
+    <textarea {...props} {...( isChanged && isUsed && error ? {
+      className: `is-invalid-input ${props.className}`
+    } : { className: props.className } )} />
     {isChanged && isUsed && error}
   </div>
 );
